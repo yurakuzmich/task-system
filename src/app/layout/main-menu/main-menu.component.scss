@@ -1,0 +1,15 @@
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

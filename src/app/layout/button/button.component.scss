@@ -1,0 +1,40 @@
+button {
+  padding: 11px 30px 13px 30px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  font-family: Inter;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+
+  &:hover {
+    opacity: 0.8;
+    transition: all .1s ease-in-out 0s;
+  }
+}
+
+.white {
+  color: #484848;
+  background-color: #FFFFFF;
+}
+
+.blue {
+  color: #FFFFFF;
+  background-color: #4971FF;
+  ;
+}
+
+.dark-blue {
+  color: #FFFFFF;
+  background-color: #2B53E1;
+  ;
+}
+
+.gray {
+  color: #484848;
+  background-color: #F8F8F8;
+}

@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <table>
+    <thead>
+      <th>Дата создания</th>
+      <th>Исполнитель</th>
+      <th>Приоритет задачи</th>
+      <th>Название задачи</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let task of tasks$ | async">
+        <tr>
+          <td>{{ task.date }}</td>
+          <td>{{  task.userId  }}</td>
+          <td><app-priority-pill [priority]="task.priority"></app-priority-pill></td>
+          <td>{{  task.title  }}</td>
+          <td>X</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+.priority-pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 34px;
+  padding: 4px, 20px, 6px, 20px;
+  border-radius: 50px;
+}
+
+.low {
+  background-color: #F0F1FF;
+}
+
+.medium {
+  background-color: #FAF7E3;
+  ;
+}
+
+.high {
+  background-color: #FFEEEB;
+}
