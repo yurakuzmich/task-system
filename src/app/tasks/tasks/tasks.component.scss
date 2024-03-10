@@ -28,9 +28,78 @@ tr {
   line-height: 22px;
   letter-spacing: 0em;
   text-align: left;
+
+  &:hover {
+    background-color: #EAEAEA;
+    cursor: pointer;
+  }
 }
 
 td {
-  padding: 20px 0;
+  padding: 10px 0;
   border-top: 1px solid #EAEAEA;
+  line-height: 50px;
+
+  & .username {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+  }
+
+  & img {
+    display: block;
+    width: 34px;
+    height: 34px;
+
+    &.remove-task {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  & span {
+    display: block;
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  & .pagination_nav {
+    width: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 40px;
+  }
+
+  a {
+    display: block;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    &.enabled {
+      pointer-events: all;
+      opacity: 1;
+    }
+
+    & img {
+      transform: rotate(90deg);
+    }
+
+    &:last-of-type {
+      & img {
+        transform: rotate(270deg);
+      }
+    }
+  }
 }

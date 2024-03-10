@@ -1,14 +1,16 @@
-import { Task, User } from "../models";
+import { ModalComponents, Task, User } from "../models";
 
 export interface AppState {
-  users: UserState;
-  tasks: TaskState;
-}
-
-export interface UserState {
   users: User[];
+  tasks: Task[];
+  currentUser: User | null;
+  modal: ModalState;
 }
 
-export interface TaskState {
-  tasks: Task[];
+export interface ModalState {
+  isOpen: boolean;
+  type: ModalComponents | null;
+  taskId?: number | null;
 }
+
+

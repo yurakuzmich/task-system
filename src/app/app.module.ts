@@ -11,6 +11,12 @@ import { MainMenuItemComponent } from './layout/main-menu-item/main-menu-item.co
 import { MainLogoComponent } from './layout/main-logo/main-logo.component';
 import { MainPageComponent } from './layout/main-page/main-page.component';
 import { HeaderUserPanelComponent } from './layout/header-user-panel/header-user-panel.component';
+import { ModalWindowComponent } from './layout/modal-window/modal-window.component';
+import { TaskComponent } from './tasks/task/task.component';
+
+import { StoreModule } from '@ngrx/store';
+import { appReducer } from './state/reducer';
+import { CreateTaskComponent } from './tasks/create-task/create-task.component';
 import { ButtonComponent } from './layout/button/button.component';
 
 @NgModule({
@@ -24,11 +30,15 @@ import { ButtonComponent } from './layout/button/button.component';
     MainLogoComponent,
     MainPageComponent,
     HeaderUserPanelComponent,
-    ButtonComponent
+    ModalWindowComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({ app: appReducer }),
+    TaskComponent,
+    CreateTaskComponent,
+    ButtonComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

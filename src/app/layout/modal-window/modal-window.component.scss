@@ -1,0 +1,46 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7); ;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  min-width: 765px;
+  min-height: 570px;
+  padding: 30px 50px 50px 50px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  z-index: 1001;
+
+  &_close {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 80%;
+      transition: all .1s ease-in-out 0s;
+    }
+  }
+
+  &_title {
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-family: Segoe UI;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}

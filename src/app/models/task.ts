@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Task {
   id: number;
   date: number;
@@ -5,4 +7,8 @@ export interface Task {
   description: string;
   priority: string;
   userId: number;
+}
+
+export interface TaskWithUser extends Task {
+  user?: User;
 }

@@ -1,3 +1,8 @@
-<button [ngClass]="buttonStyle">
+<button [ngClass]="{
+  'gray': buttonStyle === 'gray',
+  'white': buttonStyle === 'white',
+  'dark-blue': buttonStyle === 'dark-blue',
+  'blue': buttonStyle === 'blue'
+}">
   {{ label }}
 </button>

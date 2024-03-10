@@ -3,5 +3,5 @@
   <p>{{ userName }}</p>
 </div>
 <div *ngIf="!isLoggedIn">
-  <a href="">Login</a>
+  <a href="" (click)="logIn($event)">Login</a>
 </div>

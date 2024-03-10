@@ -8,15 +8,32 @@
       <th></th>
     </thead>
     <tbody>
-      <ng-container *ngFor="let task of tasks$ | async">
-        <tr>
-          <td>{{ task.date }}</td>
-          <td>{{  task.userId  }}</td>
+      <ng-container *ngFor="let task of tasks">
+        <tr (click)="handleClick(task.id)">
+          <td>{{ task.date | date: 'dd MMMM yyyy' }}</td>
+          <td>
+            <div class="username">
+              <img src="{{ task.user?.avatar }}" alt="">
+              <span>{{  task.user?.displayName }}</span>
+            </div>
+          </td>
           <td><app-priority-pill [priority]="task.priority"></app-priority-pill></td>
           <td>{{  task.title  }}</td>
-          <td>X</td>
+          <td>
+            <a href="" (click)="deleteTask($event, task.id)">
+              <img src="assets/icons/x.svg" alt="" class="remove-task">
+            </a>
+          </td>
         </tr>
       </ng-container>
     </tbody>
   </table>
+  <div class="pagination">
+    <p>{{ currentPage }} of {{ totalPages }}</p>
+    <p class="pagination_nav">
+      <a href="" [ngClass]="{'disabled': currentPage === 1}" (click)="goPreviousPage($event)"><img src="assets/icons/arrow.svg" alt=""></a>
+      <a href="" [ngClass]="{'disabled': currentPage === totalPages}" (click)="goNextPage($event)"><img src="assets/icons/arrow.svg" alt=""></a>
+    </p>
+  </div>
+
 </div>

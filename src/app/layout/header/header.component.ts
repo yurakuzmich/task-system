@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../models';
 import { UsersService } from '../../services/users.service';
+import { ModalWindowService } from '../../services/modal-window.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,14 @@ import { UsersService } from '../../services/users.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  @Input() currentUser!: User | null;
+  @Output() openCreateTaskModal = new EventEmitter<string>();
 
-  currentUser: User | {} = {};
+  constructor() { }
 
-  constructor(private usersService: UsersService) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.usersService.getCurrentUser().subscribe((data) => {
-      this.currentUser = data;
-      console.log(this.currentUser);
-    });
+  addTaskButtonHandler() {
+    this.openCreateTaskModal.emit();
   }
 }

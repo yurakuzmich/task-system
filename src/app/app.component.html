@@ -3,7 +3,8 @@
     <app-sidebar></app-sidebar>
   </nav>
   <main>
-    <app-header></app-header>
+    <app-header  [currentUser]="currentUser" (openCreateTaskModal)="openCreateTaskModal()"></app-header>
     <router-outlet></router-outlet>
   </main>
 </div>
+<app-modal-window *ngIf="isModalOpen"></app-modal-window>

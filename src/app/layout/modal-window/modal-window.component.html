@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="modal">
+    <a href="" class="modal_close" (click)="close($event)">
+      <img src="assets/icons/x.svg" alt="">
+    </a>
+
+    <h3 class="modal_title">{{ modalTitle }}</h3>
+    <div class="modal_body">
+      <app-task *ngIf="componentToShow === 'task'" [task]="task" ></app-task>
+      <app-create-task *ngIf="componentToShow === 'add-task'"></app-create-task>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { tasks as TASKS } from './../mock-data/tasks.mock';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
-  tasks: Task[] = TASKS;
-  constructor() { }
+  private tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(TASKS);
+  tasks$: Observable<Task[]> = this.tasksSubject.asObservable();
+  private tasks: Task[] = TASKS;
 
-  getTasks(): Observable<Task[]> {
-    return of(this.tasks);
+  constructor() {}
+
+  getTasks(): void {
+    this.tasksSubject.next(this.tasks);
+  }
+
+  deleteTask(taskId: number): void {
+    console.log("DELEETD TASK: ", taskId);
+    console.log("TASKS: ", this.tasks);
+    this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.tasksSubject.next(this.tasks);
   }
 }
