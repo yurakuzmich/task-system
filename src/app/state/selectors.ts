@@ -22,6 +22,11 @@ export const selectModalTaskId = createSelector(
 );
 
 //USERS
+export const isLoggedIn = createSelector(
+    selectAppState,
+    (state: AppState) => !!state.isLoggedIn
+);
+
 export const selectCurrentUser = createSelector(
   selectAppState,
   (state: AppState) => state.currentUser

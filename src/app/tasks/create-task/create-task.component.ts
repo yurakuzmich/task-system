@@ -66,6 +66,7 @@ export class CreateTaskComponent implements OnInit, OnDestroy {
     if (this.formValid) {
       const newTask = {
         ...this.createTaskForm.value,
+        userId: Number(this.createTaskForm.controls['userId'].value),
         date: Date.now(),
         id: Math.round(Math.random()*10000),
       };

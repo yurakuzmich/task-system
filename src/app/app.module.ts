@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/reducer';
 import { CreateTaskComponent } from './tasks/create-task/create-task.component';
 import { ButtonComponent } from './layout/button/button.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ButtonComponent } from './layout/button/button.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ app: appReducer }),
     TaskComponent,
     CreateTaskComponent,

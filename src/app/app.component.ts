@@ -6,7 +6,8 @@ import { users as USERS } from './mock-data/users.mock';
 import { loadInitialData, openCreateTaskModal } from './state/actions';
 import { Observable, Subscription } from 'rxjs';
 import { User } from './models';
-import { selectCurrentUser, selectIsModalOpen } from './state/selectors';
+import { isLoggedIn, selectCurrentUser, selectIsModalOpen } from './state/selectors';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,11 @@ import { selectCurrentUser, selectIsModalOpen } from './state/selectors';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'task-system';
+  subscriptions: Subscription[] = [];
+
+  isUserLoggedIn = false;
+  isUserLoggedIn$!: Observable<boolean>;
+  isUserLoggedInSubscription!: Subscription;
 
   isModalOpen = true;
   isModalOpen$!: Observable<boolean>;
@@ -28,21 +34,39 @@ export class AppComponent implements OnInit, OnDestroy {
   currentUser$!: Observable<User | null>;
   currentUserSubscription!: Subscription;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private loginService: LoginService) {}
 
   ngOnInit(): void {
+    this.loadAppInitialData();
+
+    this.checkToken();
+
+    this.isUserLoggedIn$ = this.store.pipe(select(isLoggedIn));
+    this.isUserLoggedInSubscription = this.isUserLoggedIn$.subscribe(isLoggedIn => this.isUserLoggedIn = isLoggedIn);
+    this.subscriptions.push(this.isUserLoggedInSubscription);
+
     this.isModalOpen$ = this.store.pipe(select(selectIsModalOpen));
     this.isModalOpenSubscription = this.isModalOpen$.subscribe(isOpen => this.isModalOpen = isOpen);
+    this.subscriptions.push(this.isModalOpenSubscription);
 
-    this.loadAppInitialData();
+
 
     this.currentUser$ = this.store.pipe(select(selectCurrentUser));
     this.currentUserSubscription = this.currentUser$.subscribe(user => this.currentUser = user);
+    this.subscriptions.push(this.currentUserSubscription);
   }
 
   ngOnDestroy(): void {
-    this.currentUserSubscription.unsubscribe();
-    this.isModalOpenSubscription.unsubscribe();
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  checkToken() {
+    const token = localStorage.getItem('authToken');
+    console.log(token);
+    if (!token) return;
+    const userData = token.split(':');
+    console.log(userData);
+    this.loginService.login(userData[0], userData[1]);
   }
 
   loadAppInitialData() {

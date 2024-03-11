@@ -11,7 +11,9 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderUserPanelComponent {
   @Input() currentUser!: User | null;
 
-  constructor(private loginService: LoginService, private authService: AuthService)  {}
+  constructor(
+    // private loginService: LoginService,
+    private authService: AuthService)  {}
 
   get isLoggedIn() {
     return this.authService.isLoggedIn();
@@ -33,8 +35,8 @@ export class HeaderUserPanelComponent {
     return name;
   }
 
-  logIn(e: any) {
-    e.preventDefault();
-    this.loginService.login();
-  }
+  // logIn(e: any) {
+  //   e.preventDefault();
+  //   this.loginService.login();
+  // }
 }

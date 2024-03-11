@@ -1,0 +1,49 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1005;
+  background-color: #F8F8F8;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  width: 844px;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+
+  &_logo {}
+
+  &_form {
+    padding: 10px 50px 50px 50px;
+
+    & form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      & input {
+        height: 56px;
+        line-height: 56px;
+        font-size: 23px;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #EAEAEA;
+      }
+
+      & p {
+        color: red;
+        margin: 0;
+        padding: 0;
+        font-size: x-small;
+      }
+    }
+  }
+}

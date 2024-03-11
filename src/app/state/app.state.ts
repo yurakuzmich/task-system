@@ -5,6 +5,7 @@ export interface AppState {
   tasks: Task[];
   currentUser: User | null;
   modal: ModalState;
+  isLoggedIn: boolean;
 }
 
 export interface ModalState {

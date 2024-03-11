@@ -6,6 +6,15 @@ export const loadInitialData = createAction(
   props<{ users: User[]; tasks: Task[]; currentUser: User | null }>()
 );
 
+export const loginUser = createAction(
+  '[App] Login User',
+  props<{ user: User }>()
+);
+
+export const logoutUser = createAction(
+  '[App] Logout User',
+);
+
 export const createTask = createAction(
   '[Tasks] Create Task',
   props<{ task: Task }>()

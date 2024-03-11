@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { closeModal, deleteTask, loadInitialData, openCreateTaskModal, openViewTaskModal, showState, createTask } from './actions';
+import { closeModal, deleteTask, loadInitialData, openCreateTaskModal, openViewTaskModal, showState, createTask, loginUser, logoutUser } from './actions';
 import { AppState } from './app.state';
 import { ModalComponents } from '../models';
 
@@ -7,6 +7,7 @@ export const initialState: AppState = {
   users: [],
   tasks: [],
   currentUser: null,
+  isLoggedIn: false,
   modal: {
     isOpen: false,
     type: null,
@@ -23,7 +24,28 @@ export const appReducer = createReducer(
       ...state,
       users,
       tasks,
-      currentUser
+      currentUser: null,
+    })
+  }),
+
+  on(loginUser, (state, {user}) => {
+    return ({
+      ...state,
+      currentUser: user,
+      isLoggedIn: true,
+    })
+  }),
+
+  on(logoutUser, (state) => {
+    return ({
+      ...state,
+      isLoggedIn: false,
+      currentUser: null,
+      modal: {
+        isOpen: false,
+        type: null,
+        taskId: null,
+      }
     })
   }),
 
