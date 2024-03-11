@@ -3,11 +3,12 @@ import { ModalWindowService } from './services/modal-window.service';
 import { Store, select } from '@ngrx/store';
 import { tasks as TASKS } from './mock-data/tasks.mock';
 import { users as USERS } from './mock-data/users.mock';
-import { loadInitialData, openCreateTaskModal } from './state/actions';
+import { loadInitialData, openCreateTaskModal, sortTasksAsc, sortTasksDesc } from './state/actions';
 import { Observable, Subscription } from 'rxjs';
 import { User } from './models';
 import { isLoggedIn, selectCurrentUser, selectIsModalOpen } from './state/selectors';
 import { LoginService } from './services/login.service';
+import { SortDirection } from './models/sort-direction.enum';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,8 @@ export class AppComponent implements OnInit, OnDestroy {
   currentUser: User | null = null;
   currentUser$!: Observable<User | null>;
   currentUserSubscription!: Subscription;
+
+  tasksSortedByDateDirection = SortDirection.ASC;
 
   constructor(private store: Store, private loginService: LoginService) {}
 
@@ -75,5 +78,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   openCreateTaskModal() {
     this.store.dispatch(openCreateTaskModal());
+  }
+
+  sortTasksByDate() {
+    if(this.tasksSortedByDateDirection === SortDirection.ASC) {
+      this.store.dispatch(sortTasksAsc());
+      this.tasksSortedByDateDirection = SortDirection.DESC;
+    } else {
+      this.store.dispatch(sortTasksDesc());
+      this.tasksSortedByDateDirection = SortDirection.ASC;
+    }
   }
 }

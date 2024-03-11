@@ -6,7 +6,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { selectUsers } from '../../state/selectors';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { createTask, showState } from '../../state/actions';
+import { closeModal, createTask, showState } from '../../state/actions';
 
 @Component({
   standalone: true,
@@ -72,6 +72,7 @@ export class CreateTaskComponent implements OnInit, OnDestroy {
       };
       this.store.dispatch(createTask({task: newTask}));
       this.store.dispatch(showState());
+      this.store.dispatch(closeModal());
     };
   }
 

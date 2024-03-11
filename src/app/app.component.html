@@ -5,7 +5,11 @@
     <app-sidebar></app-sidebar>
   </nav>
   <main>
-    <app-header  [currentUser]="currentUser" (openCreateTaskModal)="openCreateTaskModal()"></app-header>
+    <app-header
+      [currentUser]="currentUser"
+      (openCreateTaskModal)="openCreateTaskModal()"
+      (sortTasksByDate)="sortTasksByDate()">
+    </app-header>
     <router-outlet></router-outlet>
   </main>
 </div>

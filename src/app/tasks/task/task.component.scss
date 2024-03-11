@@ -29,6 +29,10 @@ label {
       & input[type="radio"]:checked {
         background-color: #007bff;
       }
+
+      & label {
+        margin: 0;
+      }
     }
   }
 

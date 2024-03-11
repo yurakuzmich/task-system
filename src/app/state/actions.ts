@@ -25,6 +25,14 @@ export const deleteTask = createAction(
   props<{ taskId: number }>()
 );
 
+export const sortTasksAsc = createAction(
+    '[Tasks] Sort Tasks Asc',
+);
+
+export const sortTasksDesc = createAction(
+  '[Tasks] Sort Tasks Desc',
+);
+
 export const showState = createAction(
   '[App] Show State',
 );

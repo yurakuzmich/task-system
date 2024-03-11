@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { closeModal, deleteTask, loadInitialData, openCreateTaskModal, openViewTaskModal, showState, createTask, loginUser, logoutUser } from './actions';
+import { closeModal, deleteTask, loadInitialData, openCreateTaskModal, openViewTaskModal, showState, createTask, loginUser, logoutUser, sortTasksAsc, sortTasksDesc } from './actions';
 import { AppState } from './app.state';
 import { ModalComponents } from '../models';
 
@@ -94,6 +94,28 @@ export const appReducer = createReducer(
     ...state,
     tasks: state.tasks.filter(task => task.id !== taskId),
   })),
+
+  on(sortTasksAsc, (state) => {
+    const sortedTasks = [...state.tasks].sort((a, b) => {
+      return a.date > b.date ? 1 : -1;
+    });
+
+    return ({
+      ...state,
+      tasks: sortedTasks,
+    });
+  }),
+
+  on(sortTasksDesc, (state) => {
+    const sortedTasks = [...state.tasks].sort((a, b) => {
+      return a.date > b.date ? -1 : 1;
+    });
+
+    return ({
+      ...state,
+      tasks: sortedTasks,
+    });
+  }),
 
   on(showState, (state) => {
     console.log('STATE IS: ', state);

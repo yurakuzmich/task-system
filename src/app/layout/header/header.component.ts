@@ -11,6 +11,7 @@ import { ModalWindowService } from '../../services/modal-window.service';
 export class HeaderComponent implements OnInit {
   @Input() currentUser!: User | null;
   @Output() openCreateTaskModal = new EventEmitter<string>();
+  @Output() sortTasksByDate = new EventEmitter<string>();
 
   constructor() { }
 
@@ -18,5 +19,9 @@ export class HeaderComponent implements OnInit {
 
   addTaskButtonHandler() {
     this.openCreateTaskModal.emit();
+  }
+
+  sortTasksByDateHandler() {
+    this.sortTasksByDate.emit();
   }
 }

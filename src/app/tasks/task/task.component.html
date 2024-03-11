@@ -17,15 +17,15 @@
     <label for="task-priority">Приоритет задачи:*</label>
     <div id="task-priority" class="form-group_priority">
       <div>
-        <input type="radio" id="high-priority" name="option" value="high-priority">
+        <input type="radio" id="high-priority" value="high" [checked]="task?.priority === 'high'">
         <label for="high-priority">Высокий</label><br>
       </div>
       <div>
-        <input type="radio" id="medium-priority" name="option" value="medium-priority">
+        <input type="radio" id="medium-priority" value="medium" [checked]="task?.priority === 'medium'">
         <label for="medium-priority">Средний</label>
       </div>
       <div>
-        <input type="radio" id="low-priority" name="option" value="low-priority">
+        <input type="radio" id="low-priority" value="low" [checked]="task?.priority === 'low'">
         <label for="low-priority">Низкий</label><br>
       </div>
     </div>
