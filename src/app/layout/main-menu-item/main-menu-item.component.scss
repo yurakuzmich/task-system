@@ -4,6 +4,7 @@ a {
   height: 64px;
   padding-left: 70px;
   text-decoration: none;
+  position: relative;
 
   font-size: 17px;
   font-weight: 400;
@@ -21,5 +22,64 @@ a {
     color: #4971FF;
     border-left: 4px solid #4971FF;
     background: linear-gradient(90deg, rgba(73, 113, 255, 0.1) 0%, rgba(73, 113, 255, 0) 100%);
+  }
+
+  &::before {
+    content: '';
+    // background: url('./../../../assets/icons/home.svg') center center no-repeat;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 20px;
+    left: 35px;
+  }
+
+  &.home {
+    &::before {
+      background: url('./../../../assets/icons/home.svg') center center no-repeat;
+    }
+  }
+
+  &.tasks {
+    &::before {
+      background: url('./../../../assets/icons/tasks.svg') center center no-repeat;
+    }
+  }
+
+  &.calendar {
+    &::before {
+      background: url('./../../../assets/icons/calendar.svg') center center no-repeat;
+    }
+  }
+
+  &.stats {
+    &::before {
+      background: url('./../../../assets/icons/stats.svg') center center no-repeat;
+    }
+  }
+
+  &.team {
+    &::before {
+      background: url('./../../../assets/icons/team.svg') center center no-repeat;
+    }
+  }
+
+  &.profile {
+    &::before {
+      background: url('./../../../assets/icons/profile.svg') center center no-repeat;
+    }
+  }
+
+  &.settings {
+    border-top: 1px solid #EAEAEA;
+    &::before {
+      background: url('./../../../assets/icons/settings.svg') center center no-repeat;
+    }
+  }
+
+  &.logout {
+    &::before {
+      background: url('./../../../assets/icons/logout.svg') center center no-repeat;
+    }
   }
 }

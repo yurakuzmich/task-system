@@ -65,10 +65,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   checkToken() {
     const token = localStorage.getItem('authToken');
-    console.log(token);
     if (!token) return;
     const userData = token.split(':');
-    console.log(userData);
     this.loginService.login(userData[0], userData[1]);
   }
 

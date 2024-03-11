@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   submitLogin(e: any) {
     e.preventDefault();
+    this.validateForm();
 
     if(!this.loginForm.valid) return;
 
@@ -36,5 +37,9 @@ export class LoginComponent implements OnInit {
     if(this.loginService.login(username, password)) {
       this.router.navigate(['/tasks']);
     };
+  }
+
+  validateForm() {
+    Object.values(this.loginForm.controls).forEach(control => control.markAsTouched());
   }
 }

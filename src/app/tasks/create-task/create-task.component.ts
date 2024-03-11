@@ -60,7 +60,6 @@ export class CreateTaskComponent implements OnInit, OnDestroy {
   }
 
   submitTask() {
-    console.log(this.createTaskForm.value);
     this.validateForm();
 
     if (this.formValid) {

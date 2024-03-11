@@ -11,37 +11,43 @@ export class MainMenuComponent {
     {
       title: 'Главная страница',
       link: '/',
-      icon: '',
+      class: 'home',
       label: null
     },
     {
       title: 'Управление задачами',
       link: '/tasks',
-      icon: '',
+      class: 'tasks',
       label: null
     },
     {
       title: 'Календарь',
       link: '/calendar',
-      icon: '',
+      class: 'calendar',
       label: null
     },
     {
       title: 'Команда',
       link: '/team',
-      icon: '',
+      class: 'team',
       label: null
     },
     {
       title: 'Статистика',
       link: '/stats',
-      icon: '',
+      class: 'stats',
       label: null
     },
     {
       title: 'Профиль',
       link: '/profile',
-      icon: '',
+      class: 'profile',
+      label: null
+    },
+    {
+      title: 'Настройки',
+      link: '/settings',
+      class: 'settings',
       label: null
     },
   ];

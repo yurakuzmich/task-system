@@ -15,12 +15,10 @@ export class ModalWindowService {
   }
 
   openModal() {
-    console.log('Open Modal');
     this.isModalOpenedSubject.next(true);
   }
 
   closeModal() {
-    console.log('Close Modal');
     this.isModalOpenedSubject.next(false);
   }
 }

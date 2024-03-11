@@ -12,8 +12,9 @@ import { selectPaginatedTasks, selectTasksCount, selectTasksWithUsers } from '..
 })
 export class TasksComponent implements OnInit, OnDestroy {
 
+  //OF COURSE I CAN REMOVE MAGIC NUMBERS :)
   currentPage = 1;
-  tasksPerPage = 8;
+  tasksPerPage = 5;
   totalPages = 1;
 
   tasks: TaskWithUser[] | null = null;
@@ -52,14 +53,12 @@ export class TasksComponent implements OnInit, OnDestroy {
   goNextPage(e: any) {
     e.preventDefault();
     this.currentPage = this.currentPage === this.totalPages ? this.currentPage : ++this.currentPage;
-    console.log(this.currentPage);
     this.loadTasks();
   }
 
   goPreviousPage(e: any) {
     e.preventDefault();
     this.currentPage = this.currentPage === 1 ? 1 : --this.currentPage;
-    console.log(this.currentPage);
     this.loadTasks();
   }
 
@@ -67,7 +66,6 @@ export class TasksComponent implements OnInit, OnDestroy {
     e.preventDefault();
     this.store.dispatch(deleteTask({ taskId }));
     this.store.dispatch(showState());
-    console.log('Dispatched delete task');
   }
 
   ngOnDestroy(): void {

@@ -19,7 +19,6 @@ export const appReducer = createReducer(
   initialState,
 
   on(loadInitialData, (state, { users, tasks, currentUser }) => {
-    console.log('loadInitialData', users, tasks, currentUser);
     return ({
       ...state,
       users,
@@ -82,8 +81,6 @@ export const appReducer = createReducer(
   }),
 
   on(createTask, (state, {task}) => {
-    console.log('createTask', task);
-
     return ({
       ...state,
       tasks: [...state.tasks, task],
@@ -118,7 +115,6 @@ export const appReducer = createReducer(
   }),
 
   on(showState, (state) => {
-    console.log('STATE IS: ', state);
     return state;
   }),
 );

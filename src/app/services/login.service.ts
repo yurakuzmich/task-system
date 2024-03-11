@@ -16,7 +16,6 @@ export class LoginService {
 
   login(email: string, password: string) {
     const user = this.admins.find(admin => admin.email === email && admin.password === password);
-    console.log('USER: ', user);
     if(!user) {
       return false;
     } else {

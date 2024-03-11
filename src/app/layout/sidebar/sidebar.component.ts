@@ -12,7 +12,7 @@ export class SidebarComponent {
   logoutLink: MenuItem = {
     title: 'Logout',
     link: 'logout',
-    icon: 'logout',
+    class: 'logout',
     label: null,
   };
 

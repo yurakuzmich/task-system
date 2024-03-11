@@ -1,3 +1,3 @@
-<a routerLink="{{ props.link }}" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+<a [routerLink]="props.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [ngClass]="props.class">
   {{ props.title }}
 </a>

@@ -28,7 +28,6 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.componentToShow$ = this.store.pipe(select(selectModalComponent));
     this.componentToShowSubscription = this.componentToShow$.subscribe(component => {
-      console.log(component);
       this.modalTitle = component === ModalComponents.ADD_TASK ? ModalTitles.ADD_TASK : ModalTitles.VIEW_TASK;
       this.componentToShow = component;
     });
@@ -45,7 +44,6 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
   }
 
   close(e: any) {
-    console.log('Closing modal');
     e.preventDefault();
     this.store.dispatch(closeModal());
   }
