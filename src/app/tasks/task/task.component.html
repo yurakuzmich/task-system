@@ -1,10 +1,40 @@
-<p>{{ task?.id }}</p>
-<p>{{ task?.date | date: "dd MMMM yyyy" }}</p>
-<p>{{ task?.title }}</p>
-<p>{{ task?.description }}</p>
-<p>{{ task?.priority }}</p>
-<p>{{ task?.user?.displayName }}</p>
+<form action="">
+  <div class="form-group_title">
+    <div class="form-group">
+      <label for="task-date">Дата создания</label>
+      <input type="text" id="task-date" readonly value="{{ task?.date | date: 'dd MMMM yyyy' }}">
+    </div>
+    <div class="form-group">
+      <label for="task-title">Название задачи</label>
+      <input type="text" id="task-title" readonly value="{{ task?.title }}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="task-description">Описание</label>
+    <textarea name="" id="task-description" cols="30" rows="10" readonly>{{ task?.description }}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="task-priority">Приоритет задачи:*</label>
+    <div id="task-priority" class="form-group_priority">
+      <div>
+        <input type="radio" id="high-priority" name="option" value="high-priority">
+        <label for="high-priority">Высокий</label><br>
+      </div>
+      <div>
+        <input type="radio" id="medium-priority" name="option" value="medium-priority">
+        <label for="medium-priority">Средний</label>
+      </div>
+      <div>
+        <input type="radio" id="low-priority" name="option" value="low-priority">
+        <label for="low-priority">Низкий</label><br>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="selectUser">Исполнитель*:</label>
+    <select id="selectUser">
+      <option value="">{{ task?.user?.displayName }}</option>
+    </select>
+  </div>
 
-<div>
-  
-</div>
+</form>

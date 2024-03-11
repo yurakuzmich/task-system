@@ -15,7 +15,7 @@ export class ModalWindowComponent implements OnInit, OnDestroy {
 
   modalTitle = '';
 
-  componentToShow!: string | null;
+  componentToShow: string | null = 'add-task';
   componentToShow$!: Observable<string | null>;
   componentToShowSubscription!: Subscription;
 

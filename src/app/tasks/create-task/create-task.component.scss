@@ -2,6 +2,14 @@
   margin-top: 20px;
 }
 
+label {
+  margin-bottom: 10px;
+
+  &.with-error {
+    color: red;
+  }
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -26,6 +34,15 @@
         background-color: #007bff;
       }
     }
+
+    & label {
+      margin: 0;
+    }
+  }
+
+  &_error {
+    color: red;
+    margin: 0;
   }
 
   & input,
@@ -52,6 +69,10 @@
   }
 }
 
+.mandatory-mark {
+  color: #4971FF;
+}
+
 .submit-buttons {
   display: flex;
   flex-direction: row;
@@ -59,6 +80,11 @@
   align-items: center;
   gap: 10px;
   margin-top: 30px;
+
+  &_disabled {
+    pointer-events: none;
+    opacity: 0.7;
+  }
 }
 // width: Fill (665px)
 // height: Hug (50px)

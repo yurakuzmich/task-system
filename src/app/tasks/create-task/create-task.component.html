@@ -1,46 +1,48 @@
-<form action="">
+<form action="" [formGroup]="createTaskForm">
   <div class="form-group_title">
     <div class="form-group">
       <label for="task-date">Дата создания</label>
-      <input type="text" id="task-date" readonly value="{{ creationDate | date:'dd MMMM yyyy' }}">
+      <input type="text" id="task-date" [value]="creationDate | date:'dd MMMM yyyy'">
     </div>
     <div class="form-group">
-      <label for="task-title">Название задачи</label>
-      <input type="text" id="task-title" >
+      <label for="task-title" [ngClass]="{'with-error': titleControl.touched && titleControl.invalid}">Название<span class="mandatory-mark">*</span></label>
+      <input type="text" id="task-title" formControlName="title">
+      <p *ngIf="titleControl.touched && titleControl.invalid" class="form-group_error">Пожалуйста, заполните это поле</p>
     </div>
   </div>
   <div class="form-group">
     <label for="task-description">Описание</label>
-    <textarea name="" id="task-description" cols="30" rows="10"></textarea>
+    <textarea id="task-description" cols="30" rows="10" formControlName="description"></textarea>
   </div>
   <div class="form-group">
-    <label for="task-priority">Приоритет задачи:*</label>
+    <label for="task-priority">Приоритет задачи<span class="mandatory-mark">*</span></label>
     <div id="task-priority" class="form-group_priority">
       <div>
-        <input type="radio" id="high-priority" name="option" value="high-priority">
-        <label for="high-priority">Высокий</label><br>
+        <input type="radio" id="high-priority" name="priority-option" value="high" formControlName="priority">
+        <label for="high-priority">Высокий</label>
       </div>
       <div>
-        <input type="radio" id="medium-priority" name="option" value="medium-priority">
+        <input type="radio" id="medium-priority" name="priority-option" value="medium" formControlName="priority">
         <label for="medium-priority">Средний</label>
       </div>
       <div>
-        <input type="radio" id="low-priority" name="option" value="low-priority">
-        <label for="low-priority">Низкий</label><br>
+        <input type="radio" id="low-priority" name="priority-option" value="low" formControlName="priority">
+        <label for="low-priority">Низкий</label>
       </div>
     </div>
+    <p *ngIf="priorityControl.touched && priorityControl.invalid" class="form-group_error">Пожалуйста, выберите приоритет задачи</p>
   </div>
   <div class="form-group">
-    <label for="selectUser">Исполнитель*:</label>
-    <select id="selectUser">
+    <label for="selectUser">Исполнитель<span class="mandatory-mark">*</span></label>
+    <select id="selectUser" formControlName="userId">
       <option value=""></option>
       <ng-container>
-        <option *ngFor="let user of users" value="{{ user.id }}">{{ user.displayName }}</option>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.displayName }}</option>
       </ng-container>
     </select>
   </div>
   <div class="submit-buttons">
-    <app-button label="Сохранить" button-style="gray"></app-button>
+    <app-button label="Сохранить" button-style="blue" (click)="submitTask()" [ngClass]="{'submit-buttons_disabled': !formValid}"></app-button>
     <app-button label="Сохранить в черновики" button-style="white"></app-button>
   </div>
 </form>

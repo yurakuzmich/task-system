@@ -6,6 +6,11 @@ export const loadInitialData = createAction(
   props<{ users: User[]; tasks: Task[]; currentUser: User | null }>()
 );
 
+export const createTask = createAction(
+  '[Tasks] Create Task',
+  props<{ task: Task }>()
+);
+
 export const deleteTask = createAction(
   '[Tasks] Delete Task',
   props<{ taskId: number }>()

@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { closeModal, deleteTask, loadInitialData, openCreateTaskModal, openViewTaskModal, showState } from './actions';
+import { closeModal, deleteTask, loadInitialData, openCreateTaskModal, openViewTaskModal, showState, createTask } from './actions';
 import { AppState } from './app.state';
 import { ModalComponents } from '../models';
 
@@ -57,6 +57,15 @@ export const appReducer = createReducer(
         taskId: null,
       }
     });
+  }),
+
+  on(createTask, (state, {task}) => {
+    console.log('createTask', task);
+
+    return ({
+      ...state,
+      tasks: [...state.tasks, task],
+    })
   }),
 
   on(deleteTask, (state, {taskId}) => ({
