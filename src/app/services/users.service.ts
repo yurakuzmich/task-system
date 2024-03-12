@@ -1,41 +1,28 @@
 import { Injectable } from '@angular/core';
 import { users as USERS } from '../mock-data/users.mock';
 import { User } from '../models';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, of, throwError } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selectCurrentUser } from '../state/selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private usersSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(USERS);
-  users$: Observable<User[]> = this.usersSubject.asObservable();
+  currentUser!: User | null;
+  userSubscription!: Subscription;
 
-  private currentUserSubject: BehaviorSubject<User | {}> = new BehaviorSubject<User | {}>({});
-  currentUser$: Observable<User | {}> = this.currentUserSubject.asObservable();
+  constructor(private store: Store) {}
 
-  constructor() {
-    this.initCurrentUser(); // Initialize current user when the service is created
+  ngOnInit(): void {
+    this.userSubscription = this.store.select(selectCurrentUser).subscribe(user => this.currentUser = user);
   }
 
-  private initCurrentUser(): void {
-    const storedUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    this.currentUserSubject.next(storedUser);
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
-  getUsers(): void {
-    this.usersSubject.next(USERS);
-  }
-
-  getUser(id: number): Observable<User> {
-    const user = USERS.find(user => user.id === id);
-    if (user) {
-      return of(user);
-    } else {
-      return throwError(`User with id ${id} not found`);
-    }
-  }
-
-  getCurrentUser(): Observable<User | {}> {
-    return this.currentUser$;
+  getCurrentUser() {
+    return this.currentUser;
   }
 }

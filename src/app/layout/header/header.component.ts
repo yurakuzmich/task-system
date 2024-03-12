@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   @Output() openCreateTaskModal = new EventEmitter<string>();
   @Output() sortTasksByDate = new EventEmitter<string>();
 
+  headerTitle = 'Управление задачами';
   constructor() { }
 
   ngOnInit() {}

@@ -9,11 +9,11 @@
       </h2>
       <form action="" [formGroup]="loginForm">
         <div>
-          <input type="email" name="username" id="" placeholder="Эл. почта" formControlName="username">
+          <input type="email" name="username" placeholder="Эл. почта" formControlName="username">
           <p *ngIf="usernameControl.touched && usernameControl.invalid">Введите валидный адрес электронной почты</p>
         </div>
         <div>
-          <input type="password" name="password" id="" placeholder="Пароль" formControlName="password">
+          <input type="password" name="password" placeholder="Пароль" formControlName="password" autocomplete="current-password">
           <p *ngIf="passwordControl.touched && passwordControl.invalid">Введите пароль</p>
         </div>
         <app-button label="Войти в систему" button-style="gray" (click)="submitLogin($event)"></app-button>
